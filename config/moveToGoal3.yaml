@@ -1,0 +1,29 @@
+behaviors:
+  MoveToGoal:
+    trainer_type: ppo
+    hyperparameters:
+      batch_size: 2048
+      buffer_size: 20480
+      learning_rate: 0.001
+      beta: 0.005
+      epsilon: 0.3
+      lambd: 0.95
+      num_epoch: 10
+      learning_rate_schedule: linear
+      beta_schedule: linear
+      epsilon_schedule: linear
+    network_settings:
+      normalize: false
+      hidden_units: 32
+      num_layers: 1
+    reward_signals:
+      extrinsic:
+        gamma: 0.99
+        strength: 1.0
+      curiosity:
+        gamma: 0.99
+        strength: 0.01
+    max_steps: 500000
+    time_horizon: 32
+    summary_freq: 10000
+    threaded: true
